@@ -4,12 +4,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    <title>JavaScript</title>
+    <title>Js</title>
 </head>
 <body>
+    <header>
+    <marquee behavior="scroll" direction="right">
+        &#128664; Cписок водіїв : ['Шумахер', 'Роман', 'Ілля', 'Ярік', 'Торетто'] &#128664;
+      </marquee>
+    </header>
+    <main>
+        <div class="container">
+
+            <div class="main-body">
+
+            <div class="select is-link">
+                <select id="car-select">
+                    <option value="">Оберіть машину </option>
+                    <option value="BMW">BMW</option>
+                    <option value="Audi">Audi</option>
+                    <option value="Mitsubishi">Mitsubishi</option>
+                    <option value="Volkswagen">Volkswagen</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Volvo">Volvo</option>
+                    <option value="Mercedes-Benz">Mercedes-Benz</option>
+                </select>
+                <div id="car-info"></div>
+              </div>
+
+              <div class="form">
+        <div>
+            <input id="input" class="input is-link" type="text" placeholder="Шумахер">
+
+            <div id="driver-info"></div>
+        </div>
+
+        <button id="button" class="button is-info">Відправити</button>
+             </div>
+
+             <div>
+                <input id="distance-input" class="input is-link" type="text" placeholder="Введіть відстань в км?">
+                <button id="calculate-btn" class="button is-primary ">Розрахувати</button>
+                <div class="result-trip"></div>
+             </div>
 
 
+
+
+        </div>
+
+
+    </div>
+    </main>
+    
     <script src="main.js"></script>
 </body>
 </html>

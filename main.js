@@ -1,35 +1,179 @@
-// Створи масив «Список покупок». Кожен елемент масиву є об'єктом, який містить назву продукту, кількість і куплений він чи ні, ціну за одиницю товару, сума. 
-// Написати кілька функцій для роботи з таким масивом:
-// Виводити весь список на екран таким чином, щоб спочатку йшли продукти, що ще не придбані, а потім - ті, що вже придбали.
-// Покупка продукту. Функція приймає назву продукту і відзначає його як придбаний.
+'use strict'
 
-const shoppingList = [
-    { name: "яблука", quantity: 3, bought: false, price: 10, total: 0 },
-    { name: "молоко", quantity: 1, bought: true, price: 25, total: 0 },
-    { name: "хліб", quantity: 2, bought: false, price: 15, total: 0 },
-    { name: "сир", quantity: 1, bought: true, price: 30, total: 0 }
+// Створи об'єкт, що описує автомобіль (виробник, модель, рік випуску, середня швидкість, обсяг паливного баку, середня витрата палива на 100 км., водії), і наступні методи для роботи з цим об'єктом:
+// Метод, який виводить на екран інформацію про автомобіль.
+// Додавання ім’я водія у список
+// Перевірка водія на наявність його ім’я у списку
+// Підрахунок необхідного часу та кількості палива для подолання переданої відстані з середньою швидкістю. Враховуй, що через кожні 4 години дороги водієві необхідно робити перерву на 1 годину. 
+
+
+const cars = [
+    { 
+      manufacturer: 'BMW',
+      model: 'X5',
+      year: 2020,
+      averageSpeed: 120,
+      fuelTankVolume: 70,
+      fuelConsumption: 9,
+      drivers: [],
+      image: '/img/bmw.png'
+    },
+    {
+      manufacturer: 'Audi',
+      model: 'A3',
+      year: 2021,
+      averageSpeed: 110,
+      fuelTankVolume: 60,
+      fuelConsumption: 7.5,
+      drivers: [],
+      image: '/img/audi.png'
+
+    },
+    {
+      manufacturer: 'Toyota',
+      model: 'Camry',
+      year: 2022,
+      averageSpeed: 100,
+      fuelTankVolume: 50,
+      fuelConsumption: 8,
+      drivers: [],
+      image: '/img/toyota.png'
+
+    },
+    {
+      manufacturer: 'Mercedes-Benz',
+      model: 'C-Class',
+      year: 2023,
+      averageSpeed: 130,
+      fuelTankVolume: 80,
+      fuelConsumption: 10,
+      drivers: [],
+      image: '/img/mercedes.png'
+
+    },
+    {
+        manufacturer: 'Volkswagen',
+        model: 'Golf',
+        year: 2021,
+        averageSpeed: 95,
+        fuelTankVolume: 50,
+        fuelConsumption: 6.5,
+        drivers: [],
+        image: '/img/volkswagen.png'
+      },
+      {
+        manufacturer: 'Volvo',
+        model: 'XC90',
+        year: 2021,
+        averageSpeed: 100,
+        fuelTankVolume: 70,
+        fuelConsumption: 7,
+        drivers: [],
+        image: '/img/volvo.png'
+      },
+      {
+        manufacturer: 'Mitsubishi',
+        model: 'Outlander',
+        year: 2022,
+        averageSpeed: 90,
+        fuelTankVolume: 55,
+        fuelConsumption: 8,
+        drivers: [],
+        image: '/img/mitsubishi.png'
+      }
   ];
+  
 
-  function printShoppingList() {
-    console.log("Список покупок:");
-    shoppingList.forEach(item => {
-      console.log(`${item.name} (${item.quantity} шт.) - ${item.price} грн. за шт. (${item.bought ? 'куплено' : 'не куплено'})`);
-    });
-  }
+  const carSelect = document.getElementById('car-select');
+  const carInfoDiv = document.getElementById('car-info');
 
-  function buyProduct(productName) {
-    const item = shoppingList.find(item => item.name === productName);
-    if (item) {
-      item.bought = true;
-      item.total = item.quantity * item.price;
-      console.log(`${item.name} куплено.`);
+  carSelect.addEventListener('change', function() {
+    const selectedValue = this.value;
+    if (selectedValue) {
+      const car = cars.find(c => c.manufacturer === selectedValue);
+      if (car) {
+        const carInfo = `<b>Марка:</b> ${car.manufacturer}<br><b>Модель:</b> ${car.model}<br><b>Рік випуску:</b> ${car.year}<br> <b>Розхід на 100км:</b> ${car.fuelConsumption + " літрів"} <br><b>Середня швидкість:</b>  ${car.averageSpeed + " km"}<br> <img src="${car.image}" alt="${car.model}">`;
+        carInfoDiv.innerHTML = carInfo;
+      }
     } else {
-      console.log(`Товар з назвою "${productName}" не знайдено.`);
+      carInfoDiv.innerHTML = '';
     }
+  });
+
+  const driversList = ['Шумахер', 'Роман', 'Ілля', 'Ярік', 'Торетто'];
+
+  const inputDriver = document.getElementById('input');
+  const button = document.getElementById('button');
+  const driverInfo = document.getElementById('driver-info');
+  
+  button.addEventListener('click', function() {
+    const driverName = inputDriver.value;
+
+    if (driversList.includes(driverName)) {
+        const driverImage = document.createElement('img');
+        driverImage.src = '/img/driver.png';
+        driverImage.classList.add('driver-photo');
+        driverInfo.innerHTML = driverName;
+        driverInfo.appendChild(driverImage);
+    } else {
+        driverInfo.innerHTML = 'Водія не знайдено';
+      }
+
+    inputDriver.value = '';
+  });
+  
+  
+  const distanceInput = document.getElementById('distance-input');
+const calculateBtn = document.getElementById('calculate-btn');
+const resultTrip = document.querySelector('.result-trip');
+let carSelectToCalc = document.getElementById('car-select');
+
+calculateBtn.addEventListener('click', () => {
+  const distance = parseFloat(distanceInput.value);
+  if (isNaN(distance) || distance <= 0) {
+    resultTrip.textContent = 'Будь ласка, введіть правильну дистанцію!';
+    return;
   }
 
-  printShoppingList();
+  const selectedCar = cars.find(car => car.manufacturer === carSelect.value);
 
-  buyProduct("яблука");
+  if (!selectedCar) {
+    resultTrip.textContent = 'Будь ласка, виберіть автомобіль зі списку!';
+    return;
+  }
 
-  printShoppingList();
+  const time = distance / selectedCar.averageSpeed;
+  const hours = Math.floor(time);
+  const minutes = Math.round((time - hours) * 60);
+
+  const stops = Math.ceil(distance / 500);
+  const fuel = (distance / 100) * selectedCar.fuelConsumption;
+
+  resultTrip.innerHTML = `
+    <div>
+      <h3>${selectedCar.manufacturer} ${selectedCar.model}</h3>
+      <p>Час подорожі: ${hours} год ${minutes} хв</p>
+      <p>Кількість зупинок: ${stops}</p>
+      <p>Кількість витраченого пального: ${fuel.toFixed(2)} л</p>
+    </div>
+  `;
+});
+
+
+  
+
+
+  
+
+  
+  
+
+  
+  
+  
+  
+
+
+
+
+
