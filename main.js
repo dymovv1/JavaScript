@@ -16,7 +16,7 @@ const cars = [
       fuelTankVolume: 70,
       fuelConsumption: 9,
       drivers: [],
-      image: '/img/bmw.png'
+      image: 'img/bmw.png'
     },
     {
       manufacturer: 'Audi',
@@ -26,7 +26,7 @@ const cars = [
       fuelTankVolume: 60,
       fuelConsumption: 7.5,
       drivers: [],
-      image: '/img/audi.png'
+      image: 'img/audi.png'
 
     },
     {
@@ -37,7 +37,7 @@ const cars = [
       fuelTankVolume: 50,
       fuelConsumption: 8,
       drivers: [],
-      image: '/img/toyota.png'
+      image: 'img/toyota.png'
 
     },
     {
@@ -48,7 +48,7 @@ const cars = [
       fuelTankVolume: 80,
       fuelConsumption: 10,
       drivers: [],
-      image: '/img/mercedes.png'
+      image: 'img/mercedes.png'
 
     },
     {
@@ -59,7 +59,7 @@ const cars = [
         fuelTankVolume: 50,
         fuelConsumption: 6.5,
         drivers: [],
-        image: '/img/volkswagen.png'
+        image: 'img/volkswagen.png'
       },
       {
         manufacturer: 'Volvo',
@@ -69,7 +69,7 @@ const cars = [
         fuelTankVolume: 70,
         fuelConsumption: 7,
         drivers: [],
-        image: '/img/volvo.png'
+        image: 'img/volvo.png'
       },
       {
         manufacturer: 'Mitsubishi',
@@ -79,7 +79,7 @@ const cars = [
         fuelTankVolume: 55,
         fuelConsumption: 8,
         drivers: [],
-        image: '/img/mitsubishi.png'
+        image: 'img/mitsubishi.png'
       }
   ];
   
