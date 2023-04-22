@@ -111,7 +111,7 @@ const cars = [
 
     if (driversList.includes(driverName)) {
         const driverImage = document.createElement('img');
-        driverImage.src = '/img/driver.png';
+        driverImage.src = 'img/driver.png';
         driverImage.classList.add('driver-photo');
         driverInfo.innerHTML = driverName;
         driverInfo.appendChild(driverImage);
