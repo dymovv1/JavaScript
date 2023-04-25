@@ -58,7 +58,6 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 90vh;
 }
 
 .pad-top { 
@@ -67,4 +66,56 @@ p {
 
 .open-window {
     display: flex;
+}
+
+.traffic-light { 
+    height: 250px;
+    width: 100px;
+    background-color: currentColor;
+    border: 1px solid grey;
+    border-radius: 1%;
+    padding-top: 8px;
+    box-shadow: 8px 6px 1px -1px whitesmoke;
+}
+
+.body-traffic { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.light { 
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px 2px white;
+}
+
+.green  {
+    background-color: #00FF00;
+    opacity: 0.2;
+}
+
+.yellow  {
+    background-color: yellow;
+    opacity: 0.2;
+}
+
+.red  {
+    background-color: red;
+    opacity: 0.2;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-light { 
+    width: 100px;
+}
+
+#btn-traffic {
+    padding-top: 25px;
 }
